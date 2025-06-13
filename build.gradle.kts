@@ -20,18 +20,6 @@ subprojects {
             name = "sonatype"
         }
 
-        maven("https://repo.athlas.club/private") {
-
-            credentials {
-                username = findProperty("athlasMavenUser") as String?
-                password = findProperty("athlasMavenPassword") as String?
-            }
-
-            authentication {
-                create<BasicAuthentication>("basic")
-            }
-        }
-
     }
 
     dependencies {
@@ -39,7 +27,7 @@ subprojects {
         compileOnly("org.spigotmc:spigot-api:1.20.3-R0.1-SNAPSHOT")
     }
 
-    val targetJavaVersion = 17
+    val targetJavaVersion = 11
     tasks.withType<JavaCompile>().configureEach {
         options.encoding = "UTF-8"
 

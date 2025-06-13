@@ -1,0 +1,7 @@
+# WOOOOOOOOOOOOOOOOOOOOOOOOOOOW, LET'S REMOVE THOSE SCARY WORD 😨😨😨😟
+
+use-predefined-words: true # DO NOT DISABLE THIS TO KEEP YOUR SERVER J*B FREE 😧
+custom-words: # ignore case
+  - "resume"
+
+censor-format: "<first><censor:*><last>" # use <full> to get the full word

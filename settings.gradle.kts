@@ -1,4 +1,4 @@
-rootProject.name = "AthlasDevTemplate"
+rootProject.name = "jobless"
 
 include(":plugin")
 include(":api")
