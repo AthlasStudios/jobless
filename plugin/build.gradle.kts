@@ -1,5 +1,6 @@
 plugins {
     id("com.gradleup.shadow") version "8.3.5"
+    id("xyz.jpenilla.run-paper") version "2.3.1"
 }
 
 val projectName = rootProject.name
@@ -11,7 +12,9 @@ dependencies {
     // DEPENDENCIES
 
     implementation("net.kyori:adventure-platform-bukkit:4.4.0")
+    implementation("net.kyori:adventure-text-serializer-legacy:4.21.0")
     implementation("net.kyori:adventure-text-minimessage:4.21.0")
+
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("com.google.code.gson:gson:2.13.1")
 }
@@ -29,5 +32,9 @@ tasks {
         relocate("okhttp3", "club.athlas.jobless.libs.okhttp3")
         relocate("okio", "club.athlas.jobless.libs.okio")
         relocate("com.google.gson", "club.athlas.jobless.libs.gson")
+    }
+
+    runServer {
+        minecraftVersion("1.21.3")
     }
 }

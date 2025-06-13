@@ -1,7 +1,40 @@
 # WOOOOOOOOOOOOOOOOOOOOOOOOOOOW, LET'S REMOVE THOSE SCARY WORD 😨😨😨😟
 
 use-predefined-words: true # DO NOT DISABLE THIS TO KEEP YOUR SERVER J*B FREE 😧
+words-source: "https://github.com/AthlasStudios/jobless/blob/main/foreverUnemployed.txt" # NEEDS TO BE A .TXT FILE AND EVERY WORD HAS  TO BE SEPARATED BY A \n
 custom-words: # ignore case
+  - "job"
+  - "work"
   - "resume"
+  - "application"
+  - "hiring"
+  - "interview"
+  - "salary"
+  - "boss"
+  - "promotion"
+  - "contract"
+  - "overtime"
+  - "deadline"
+  - "meeting"
+  - "paycheck"
+  - "benefits"
+  - "vacation"
+  - "office"
+  - "colleague"
+  - "cubicle"
+  - "internship"
+  - "fired"
+  - "raise"
+  - "training"
+  - "career"
+  - "employment"
+  - "shift"
+  - "union"
+  - "retirement"
+  - "taxes"
+  - "employee"
+  - "employed"
 
-censor-format: "<first><censor:*><last>" # use <full> to get the full word
+censor-format: "<first><middle_censor:*><last>" # use <word> to get the full word
+                                                # use <total_censor:*> to get the fully censored word with the chosen char, '*' in the example
+                                                # use <middle_censor:*> to get the middle censored part with the chosen char, '*' in the example

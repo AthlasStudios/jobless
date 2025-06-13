@@ -27,7 +27,7 @@ subprojects {
         compileOnly("org.spigotmc:spigot-api:1.20.3-R0.1-SNAPSHOT")
     }
 
-    val targetJavaVersion = 11
+    val targetJavaVersion = 17
     tasks.withType<JavaCompile>().configureEach {
         options.encoding = "UTF-8"
 

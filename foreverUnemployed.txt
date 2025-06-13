@@ -27,3 +27,5 @@ shift
 union
 retirement
 taxes
+employee
+employed

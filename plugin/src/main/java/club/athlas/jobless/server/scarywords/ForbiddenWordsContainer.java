@@ -1,10 +1,11 @@
-package club.athlas.jobless.scarywords;
+package club.athlas.jobless.server.scarywords;
 
 import club.athlas.jobless.api.trauma.TheForbiddenWords;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -17,7 +18,7 @@ public class ForbiddenWordsContainer implements TheForbiddenWords {
     }
 
     public ForbiddenWordsContainer() {
-        this(THE_SCARY_STUFF);
+        this(new HashSet<>());
     }
 
     @Override
