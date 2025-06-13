@@ -8,11 +8,11 @@ public interface TheForbiddenWords {
 
     void summonTheJobGhost(@NotNull String soul);
 
-    void summonTheWholeJobFam(String @NotNull ... souls);
+    void summonTheWholeJobFam(Set<String> words);
 
     void sendBackToTheVoid(@NotNull String soul);
 
-    void exileTheJobFam(String @NotNull ... souls);
+    void exileTheJobFam(Set<String> words);
 
     boolean isJobHaunting(@NotNull String phrase);
 

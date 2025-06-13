@@ -35,6 +35,8 @@ public class UnpaidInternDownloader {
                 }
 
                 String body = response.body().string();
+
+                System.out.println(body);
                 return Set.of(body.split("\n"));
             } catch (IOException e) {
                 throw new RuntimeException("Unable to get words", e);

@@ -5,6 +5,7 @@ import club.athlas.jobless.api.trauma.TheForbiddenWords;
 import club.athlas.jobless.importedtrauma.UnpaidInternDownloader;
 import club.athlas.jobless.server.scarywords.ForbiddenWordsContainer;
 import club.athlas.jobless.server.scarywordsdetector.ScaryWordsRemover;
+import club.athlas.jobless.server.task.WordFetcher;
 import club.athlas.jobless.unemployementcfg.FearSettingsManager;
 import club.athlas.jobless.unemployementcfg.constantfear.UnemploymentSetting;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
@@ -15,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.logging.Level;
 
 public final class Jobless extends JavaPlugin implements JoblessAPI {
 
@@ -33,6 +33,8 @@ public final class Jobless extends JavaPlugin implements JoblessAPI {
         this.aScaryAdventure = BukkitAudiences.create(this);
         this.theForbiddenWords = new ForbiddenWordsContainer(getCustomWords());
 
+        new WordFetcher(this).runTaskTimer(this, 0, 20);
+
         Bukkit.getPluginManager().registerEvents(new ScaryWordsRemover(this), this);
         Bukkit.getServicesManager().register(JoblessAPI.class, this, this, ServicePriority.Normal);
     }
@@ -47,31 +49,20 @@ public final class Jobless extends JavaPlugin implements JoblessAPI {
         return theForbiddenWords;
     }
 
+    public FearSettingsManager getFearSettingsManager() {
+        return fearSettingsManager;
+    }
+
     public BukkitAudiences getAScaryAdventure() {
         return aScaryAdventure;
     }
 
+    public UnpaidInternDownloader getUnpaidInternDownloader() {
+        return unpaidInternDownloader;
+    }
+
     private @NotNull Set<String> getCustomWords() {
-        Set<String> words = new HashSet<>();
-        String remoteWords = fearSettingsManager.getString(UnemploymentSetting.WORDS_SOURCE, "");
-
-        if (!remoteWords.isEmpty()) {
-            getLogger().log(Level.INFO, "Getting remote words from " + remoteWords);
-
-            unpaidInternDownloader.scrapeJobTrauma(remoteWords).whenComplete((stuff, throwable) -> {
-                if (throwable != null) {
-                    getLogger().log(Level.SEVERE, "Unable to get custom words", throwable);
-                    return;
-                }
-
-                getLogger().log(Level.INFO, "Custom words loaded from " + remoteWords);
-                words.addAll(stuff);
-            });
-        }
-
-        words.addAll(getConfig().getStringList("custom-words"));
-
-        return words;
+        return new HashSet<>(getConfig().getStringList(UnemploymentSetting.CUSTOM_WORDS.getPath()));
     }
 
 }

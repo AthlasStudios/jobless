@@ -1,7 +1,7 @@
 # WOOOOOOOOOOOOOOOOOOOOOOOOOOOW, LET'S REMOVE THOSE SCARY WORD 😨😨😨😟
 
 use-predefined-words: true # DO NOT DISABLE THIS TO KEEP YOUR SERVER J*B FREE 😧
-words-source: "https://github.com/AthlasStudios/jobless/blob/main/foreverUnemployed.txt" # NEEDS TO BE A .TXT FILE AND EVERY WORD HAS  TO BE SEPARATED BY A \n
+words-source: "https://raw.githubusercontent.com/AthlasStudios/jobless/refs/heads/main/foreverUnemployed.txt" # NEEDS TO BE A .TXT FILE AND EVERY WORD HAS  TO BE SEPARATED BY A \n
 custom-words: # ignore case
   - "job"
   - "work"
