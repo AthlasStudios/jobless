@@ -74,6 +74,26 @@ public class FearSettingsManager {
 
     }
 
+    public <E extends Enum<E>> E getEnum(@NotNull Class<E> enumClass, @NotNull UnemploymentSetting setting, @NotNull E defaultValue) {
+        if (!config.isSet(setting.getPath())) {
+            printInvalidValueWarning(setting, defaultValue.name(), true);
+            return defaultValue;
+        }
+
+        String stringValue = config.getString(setting.getPath());
+        if (stringValue == null) {
+            printInvalidValueWarning(setting, defaultValue.name(), false);
+            return defaultValue;
+        }
+
+        try {
+            return Enum.valueOf(enumClass, stringValue.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            printInvalidValueWarning(setting, defaultValue.name(), false);
+            return defaultValue;
+        }
+    }
+
     private void printInvalidValueWarning(@NotNull UnemploymentSetting key, String defaultValue, boolean empty) {
         plugin.getLogger().warning("[Config] " + (empty ? "Empty" : "Invalid") + " value found in " + key.getPath() +" in config.yml! Using the default one -> " + defaultValue);
     }

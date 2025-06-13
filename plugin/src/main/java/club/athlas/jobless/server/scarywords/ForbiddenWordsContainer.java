@@ -55,6 +55,11 @@ public class ForbiddenWordsContainer implements TheForbiddenWords {
     }
 
     @Override
+    public void flushTheSpookyWords() {
+        nightmareFuel.clear();
+    }
+
+    @Override
     public Set<String> getSpooks() {
         return Collections.unmodifiableSet(nightmareFuel);
     }

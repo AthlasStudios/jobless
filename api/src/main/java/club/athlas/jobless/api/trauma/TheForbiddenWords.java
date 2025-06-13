@@ -16,6 +16,8 @@ public interface TheForbiddenWords {
 
     boolean isJobHaunting(@NotNull String phrase);
 
+    void flushTheSpookyWords();
+
     Set<String> getSpooks();
 
 }
